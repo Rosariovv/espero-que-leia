@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const livroSchema = mongoose.Schema({
-    _id:{
+    _id: {
         type: mongoose.Schema.Types.ObjectId,
         default: mongoose.Types.ObjectId
     },
@@ -28,8 +28,13 @@ const livroSchema = mongoose.Schema({
     descricao: {
         type: String,
         required: true
+    },
+    pontoDeEntrega: {
+        type: String,
+        required: true
     }
-},{ timestamps: true})
+
+}, { timestamps: true })
 
 const Model = mongoose.model('livros', livroSchema)
 
