@@ -46,6 +46,16 @@ const findAllLeitores = async (req, res) => {
     }
 }
 
+const findLeitorById = async (req, res) => {
+    try {
+      const findLeitor = await LeitoresModel.findById(req.params.id)
+      res.status(200).json(findLeitor)
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ message: error.message })
+    }
+ }
+
 const updateLeitor = async (req, res) => {
     try {
         const { nome, email, contato, descricao  } = req.body
@@ -68,8 +78,22 @@ const updateLeitor = async (req, res) => {
     }
 }
 
+const deleteLeitor = async (req, res) => {
+    try {
+        const { id } = req.params
+        const deletedLeitor = await LeitoresModel.findByIdAndDelete(id) 
+        const message = `O leitor com o ${deletedLeitor.name} foi deletado com sucesso!`
+       res.status(200).json({ message })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ message: error.message })
+    }
+ }
+
 module.exports = {
     createLeitor,
     findAllLeitores,
-    updateLeitor
+    findLeitorById,
+    updateLeitor,
+    deleteLeitor
 }
