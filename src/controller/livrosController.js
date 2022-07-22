@@ -46,6 +46,16 @@ const findAllLivros = async (req, res) => {
     }
 }
 
+const findLivroById = async (req, res) => {
+    try {
+      const findLivro = await LivrosModel.findById(req.params.id)
+      res.status(200).json(findLivro)
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ message: error.message })
+    }
+ }
+
 const updateLivro = async (req, res) => {
     try {
         const { titulo, autor, tipo, estilo, status, descricao, pontoDeEntrega } = req.body
@@ -68,8 +78,22 @@ const updateLivro = async (req, res) => {
     }
 }
 
+const deleteLivro = async (req, res) => {
+    try {
+        const { id } = req.params
+        const deletedLivro = await LivrosModel.findByIdAndDelete(id) 
+        const message = `O livro com o ${deletedLivro.name} foi deletado com sucesso!`
+       res.status(200).json({ message })
+    } catch (error) {
+      console.error(error)
+      res.status(500).json({ message: error.message })
+    }
+ }
+
 module.exports = {
     createLivro,
     findAllLivros,
-    updateLivro
+    findLivroById,
+    updateLivro,
+    deleteLivro
 }
