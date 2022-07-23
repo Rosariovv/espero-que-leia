@@ -48,25 +48,35 @@ const findAllLeitores = async (req, res) => {
 
 const findLeitorById = async (req, res) => {
     try {
-      const findLeitor = await LeitoresModel.findById(req.params.id)
-      res.status(200).json(findLeitor)
+        const findLeitor = await LeitoresModel.findById(req.params.id)
+        if(!findLeitor) {
+            return res.status(404).json({message:"id não encontrado"})
+          }
+        res.status(200).json(findLeitor)
     } catch (error) {
-      console.error(error)
-      res.status(500).json({ message: error.message })
+        console.error(error)
+        res.status(500).json({ message: error.message })
     }
- }
+}
 
 const updateLeitor = async (req, res) => {
     try {
-        const { nome, email, contato, descricao  } = req.body
+        const { nome, email, contato, descricao } = req.body
+
         const updateLeitores = await LeitoresModel
             .findByIdAndUpdate(req.params.id, {
-                nome, email, contato, descricao 
+                nome, email, contato, descricao
             })
+        const leitoresUpdate = await LeitoresModel
+        .findByIdAndUpdate(req.params.id)
+        if(!leitoresUpdate) {
+            return res.status(404).json({message:"id não encontrado"})
+          }
+
         res.status(200).json({
             "message": "leitor atualizado",
             "code": "SUCCESS",
-            "data": updateLeitores
+            "data": leitoresUpdate
         })
     } catch (error) {
         console.error(error)
@@ -81,14 +91,17 @@ const updateLeitor = async (req, res) => {
 const deleteLeitor = async (req, res) => {
     try {
         const { id } = req.params
-        const deletedLeitor = await LeitoresModel.findByIdAndDelete(id) 
-        const message = `O leitor com o ${deletedLeitor.name} foi deletado com sucesso!`
-       res.status(200).json({ message })
+        const deletedLeitor = await LeitoresModel.findByIdAndDelete(id)
+        if(!deletedLeitor) {
+            return res.status(404).json({message:"id não encontrado"})
+          }
+        const message = `O leitor: ${deletedLeitor.nome} foi deletado com sucesso!`
+        res.status(200).json({ message })
     } catch (error) {
-      console.error(error)
-      res.status(500).json({ message: error.message })
+        console.error(error)
+        res.status(500).json({ message: error.message })
     }
- }
+}
 
 module.exports = {
     createLeitor,

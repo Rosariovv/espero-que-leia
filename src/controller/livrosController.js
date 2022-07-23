@@ -49,6 +49,9 @@ const findAllLivros = async (req, res) => {
 const findLivroById = async (req, res) => {
     try {
       const findLivro = await LivrosModel.findById(req.params.id)
+      if(!findLivro) {
+        return res.status(404).json({message:"id não encontrado"})
+      }
       res.status(200).json(findLivro)
     } catch (error) {
       console.error(error)
@@ -59,14 +62,22 @@ const findLivroById = async (req, res) => {
 const updateLivro = async (req, res) => {
     try {
         const { titulo, autor, tipo, estilo, status, descricao, pontoDeEntrega } = req.body
+
+        const livrosUpdate = await LivrosModel
+            .findByIdAndUpdate(req.params.id)
+            if(!livrosUpdate) {
+                return res.status(404).json({message:"id não encontrado"})
+              }
+
         const updateLivros = await LivrosModel
             .findByIdAndUpdate(req.params.id, {
                 titulo, autor, tipo, estilo, status, descricao, pontoDeEntrega
             })
+
         res.status(200).json({
             "message": "livro atualizado",
             "code": "SUCCESS",
-            "data": updateLivros
+            "data": livrosUpdate
         })
     } catch (error) {
         console.error(error)
@@ -82,7 +93,10 @@ const deleteLivro = async (req, res) => {
     try {
         const { id } = req.params
         const deletedLivro = await LivrosModel.findByIdAndDelete(id) 
-        const message = `O livro com o ${deletedLivro.name} foi deletado com sucesso!`
+        if(!deletedLivro) {
+            return res.status(404).json({message:"id não encontrado"})
+          }
+        const message = `O livro: ${deletedLivro.titulo} foi deletado com sucesso!`
        res.status(200).json({ message })
     } catch (error) {
       console.error(error)
