@@ -8,9 +8,9 @@
 
 - [Apresentação](#apresentação)
 - [Contextualização](#contextualização)
-- [Fonte dos dados](#fonte-dos-dados)
 - [Funcionalidades](#funcionalidades)
-- [Tecnologias, dependências e bibliotecas](#tecnologias-dependências-e-bibliotecas)
+- [Documentação das rotas](#documentação-das-rotas)
+- [Tecnologias, bibliotecas e dependências](#tecnologias-bibliotecas-e-dependências)
 - [Instruções para instalação e contribuições no projeto](#instruções-para-instalação-e-contribuições-no-projeto)
 - [Features e rotas](#features-e-rotas)
 - [Referências](#referências)
@@ -36,6 +36,23 @@ Sempre fui uma leitora assídua desde criança, comecei pelos gibis da turma da 
 - [X] Atualização de cadastro de leitores
 - [X] Remoção de cadastro de livro
 - [X] Remoção de cadastro de leitores
+
+
+## _Documentação das rotas_
+
+| Feature                                | Método | Rota                         |
+| -------------------------------------- | ------ | ---------------------------- |
+| Cadastro de leitor                     | POST   | `/leitor`                    |
+| Cadastro de livro                      | POST   | `/livro`                     |
+| Buscar livros                          | GET    | `/livro/:id`                 |
+| Buscar leitores                        | GET    | `/leitor/:id`                |
+| Buscar livro por id                    | GET    | `/livro/:id`                 |
+| Buscar leitor por id                   | GET    | `/leitor/:id`                |
+| Atualizar livro                        | PATCH  | `/livro/:id`                 |
+| Atualizar leitor                       | PATCH  | `/leitor/:id`                |
+| Apagar livro                           | DELETE | `/livro/:id`                 |
+| Apagar leitor                          | DELETE | `/leitor/:id`                |
+
 
 ## *Tecnologias, bibliotecas e dependências*
 
@@ -77,6 +94,7 @@ Sempre fui uma leitora assídua desde criança, comecei pelos gibis da turma da 
 ## *Features e rotas*
 
 Esta API está sendo escutada na `porta 9000` e para que todas as rotas possam ser acessadas localmente é necessário usar `http://localhost:9000/` antes dos endpoints de requisição.
+Link do Heroku para o projeto com deploy: `https://esperoqleia.herokuapp.com`
 
 
 
