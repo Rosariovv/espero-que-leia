@@ -17,12 +17,12 @@
 
 ## *Apresentação*
 
-O "Espero que leia" é o projeto de conclusão do bootcamp de Back-end da [{reprograma}](https://reprograma.com.br/).  Essa é uma API que tem por objetivo fomentar a doação de livros entre leitores de uma mesma localidade.
+O "Espero que leia" é o projeto de conclusão do bootcamp de Back-end da [{reprograma}](https://reprograma.com.br/).  Essa é uma API que tem por objetivo fomentar a doação de livros entre leitores.
 
-A ideia é que os livros dos leitores que estejam sem uso possam ser doados e lidos por outras pessoas ao invés de ficar parados em uma estante.
+A ideia é que os livros que estejam parados em casa possam ser doados e lidos por outras pessoas, para que essas histórias circulem e os livros sigam o seu objetivo de disseminar o conhecimento.
 
 ## *Contextualização*
-(fazer)
+Sempre fui uma leitora assídua desde criança, comecei pelos gibis da turma da mônica, revistas adolescentes, até chegar na literatura e apesar do advento dos ebooks, ainda gosto de folhear os livros físicos e acredito que eles devem ser compartilhados. Com o Espero que leia, os leitores tem a oportunidade de doar livros e ao mesmo tempo receber doações, criando uma rede colaborativa.
 
 ## *Funcionalidades*
 
